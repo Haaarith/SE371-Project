@@ -5,7 +5,7 @@
 ?>
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top container" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top container-fluid" role="navigation">
   <div class="container row">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -62,16 +62,26 @@
             <li>
               <a href="CVs/Moath.html">Moath's CV</a>
             </li>
-          </ul>
+
+           
+        </ul>
+
+        
+        <li class="float-end">
+          <a href="register.php">Register Here</a>
         </li>
-      </ul>
-      <!-- /.navbar-collapse -->
+
+        <li class="float-end">
+          <a href="login.php">Login Here</a>
+        </li>
+  <!-- /.navbar-collapse -->
+
     </div>
-    <div class="btn-group col-md-4">
+    <!-- <div class="btn-group col-md-4">
       <button class="btn">
         <a href="register.php">Register Here</a>
       </button>
-    </div>
+    </div> -->
   </div>
   <!-- /.container -->
 </nav>
