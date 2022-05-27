@@ -79,12 +79,13 @@
                       $email = $_POST['email'];
                       $password = $_POST['password'];
                       $re_password = $_POST['re_password'];
-
+                      $type = "user";
                       if($password === $re_password) {
                         $hashedPass = hash('sha256', $password);
-                        $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashedPass')";
+                        $query = "INSERT INTO users (username, email, password, type) VALUES ('$username', '$email', '$hashedPass', '$type')";
                         $result = mysqli_query($db, $query);
-                      
+                        echo "YES!";
+                        header("location: index.php");
                       }
                       else{
                         echo "<p class='text-danger'> Passwords don't match! </p>";
