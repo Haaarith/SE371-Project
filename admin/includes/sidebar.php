@@ -52,10 +52,10 @@
               ></a>
               <ul id="demo2" class="collapse">
                 <li>
-                  <a href="#">View All users</a>
+                  <a href="./users.php?source=view_all_users">View All users</a>
                 </li>
                 <li>
-                  <a href="#">dasdasd</a>
+                  <a href="./users.php?source=add_user">Add user</a>
                 </li>
               </ul>
             </li>

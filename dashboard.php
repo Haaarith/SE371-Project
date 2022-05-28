@@ -15,7 +15,7 @@
   }
 
 
-  else if($_SESSION['type'] !== 'user'){//some
+  else if($_SESSION['type'] !== 'user'){
     header('location: index.php');//In case the key 'type' doesn't have the value 'user', then the current user isn't permitted to get into this area!
   }
   
