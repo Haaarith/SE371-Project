@@ -1,8 +1,7 @@
 <?php
   session_start();
+  include_once "./includes/db.php";
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,46 +58,40 @@
             </li>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-              >Something <b class="caret"></b
+              >Categories <b class="caret"></b
             ></a>
-            <ul class="dropdown-menu message-dropdown"  style="overflow: hidden; max-height:300px; max-width:200px; overflow: auto;">
+            <ul class="dropdown-menu message-dropdown"  style="overflow: hidden; max-height:400px; max-width:600px; overflow: auto;">
               <li class="message-preview">
-                <a href="#">
-                  <div class="media">
-                    <span class="pull-left">
-                      <img
-                        class="media-object"
-                        src="http://placehold.it/50x50"
-                        alt=""
-                      />
-                    </span>
-                    <div class="media-body">
-                      <h5 class="media-heading">
-                        <strong>Admin</strong>
-                      </h5>
-                      <p class="small text-muted">
-                        <i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="message-footer">
-                <a href="#">Read All New Messages</a>
+                <?php
+                  #query categories
+                  $cat_query = "SELECT * from categories";
+                  $result = mysqli_query($db, $cat_query);
+
+                  #loop over the catogries and add them to the dropdown menu
+                  while($row = mysqli_fetch_assoc($result)){
+                    $cat_name = $row['cat_name'];
+                    
+                    echo "<a href=index.php?category=". $cat_name .">";
+                    echo  '<div class="media">';
+                    echo    '<div class="media-body">';
+                    echo      '<h5 class="media-heading">';
+                    echo        '<strong>'. $cat_name .'</strong>';
+                    echo      '</h5>';
+                    echo    '</div>';
+                    echo  '</div>';
+                    echo '</a>';
+                  }
+                ?>
               </li>
             </ul>
           </li>
 
-                      <!-- CVs drop down-->
+          <!-- About us drop down-->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
               >About us<b class="caret"></b
             ></a>
             <ul class="dropdown-menu message-dropdown"  style="overflow: hidden; max-height:300px; max-width:200px; overflow: auto;">
-
-
-
 
               <li class="message-preview">
                 <a href="#">
@@ -306,27 +299,34 @@
             <!-- /.input-group -->
           </div>
 
-          <!-- Blog Categories Well -->
           <div class="well">
-            <h4>Blog Categories</h4>
+          <?php
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+              $user_id = $_SESSION['id'];
+
+              echo "<button type=\"button\" class=\"btn btn-primary btn-lg\">";
+              echo   "<a href=\"add_post.php?id=" . $user_id . "\" class=\"text-decoration-none\"> Add post </a>";
+              echo "</button>";
+            }
+          ?>
             <div class="row">
-              <div class="col-lg-6">
+              <!-- <div class="col-lg-6">
                 <ul class="list-unstyled">
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                 </ul>
-              </div>
+              </div> -->
               <!-- /.col-lg-6 -->
-              <div class="col-lg-6">
+              <!-- <div class="col-lg-6">
                 <ul class="list-unstyled">
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                   <li><a href="#">Category Name</a></li>
                 </ul>
-              </div>
+              </div> -->
               <!-- /.col-lg-6 -->
             </div>
             <!-- /.row -->
