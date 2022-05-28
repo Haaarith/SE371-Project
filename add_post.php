@@ -8,7 +8,7 @@
 ?>
 
 <?php
-  if(isset($_GET['add_post'])) {
+  if(isset($_GET['id'])) {
     $user_id = $_GET['id'];
   }
   else{
