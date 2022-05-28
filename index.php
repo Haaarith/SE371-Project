@@ -209,6 +209,12 @@
               echo '<li> <a href="./admin"> Admin Dashboard</a> </li>';
             }
             ?>
+            <?php
+            #show admin pannel option if the logged in user is an admin
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+              echo '<li> <a href="manage_account.php?id='. $_SESSION['id'] . '"> Manage account</a> </li>';
+            }
+            ?>
           </ul>
           <?php
             #show logout option if user is logged in
