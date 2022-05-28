@@ -1,6 +1,7 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
             <li>
+              <!-- link to homepage -->
               <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Homepage</a>
             </li>
 
@@ -11,6 +12,7 @@
               ></a>
               <ul id="demo" class="collapse">
                 <li>
+                  <!-- View all posts in the database -->
                   <a href="./posts.php">view all posts</a>
                 </li>
                 <li>
@@ -35,6 +37,7 @@
               >
             </li>
             <li>
+              <!--  View all the categories in the database -->
               <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
             </li>
 

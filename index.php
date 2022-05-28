@@ -96,7 +96,7 @@
             ?>
           </ul>
           <?php
-            #show logout button if user is logged in
+            #show logout option if user is logged in
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
               echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
               echo '<ul class="nav navbar-nav">';
@@ -104,7 +104,7 @@
               echo '</ul>';
               echo '</dv>';
             }
-            #show login / register buttons if user isn't logged in
+            #show login / register options if user isn't logged in
             else{
               echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
               echo '<ul class="nav navbar-nav">';

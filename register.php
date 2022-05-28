@@ -2,13 +2,7 @@
 <?php 
   include "includes/header.php";
   include_once "includes/db.php";
-<<<<<<< HEAD
   session_start();
-
-=======
-
-//This a brand new change!!!!!!!!!!!!! Hi i am harith 
->>>>>>> 3d142f7d463031e05911a49ff32665eb05b0a8ee
 ?>
 
 
@@ -85,21 +79,34 @@
                       $password = $_POST['password'];
                       $re_password = $_POST['re_password'];
                       $type = "user";
-                      if($password === $re_password) {
-                        $hashedPass = hash('sha256', $password);
-                        $query = "INSERT INTO users (username, email, password, type) VALUES ('$username', '$email', '$hashedPass', '$type')";
-                        $result = mysqli_query($db, $query);
-                        echo "YES!";
-                        $login_query = "SELECT id from users where username='$username'";
-                        $_SESSION['id'] = $login_query;
-                        $_SESSION['username'] = $username;
-                        $_SESSION['logged_in'] = true;
-                        header("location: index.php");
-                      }
-                      else{
-                        echo "<p class='text-danger'> Passwords don't match! </p>";
-                      }
 
+                      #checking if the username already exists in the database
+                      $check_user_exists = "SELECT username from users where username='$username'";
+                      $res = mysqli_query($db, $check_user_exists);
+                      #if the username already exists it shows "username is taken" message
+                      if(mysqli_num_rows($res) > 0){
+                        echo '<p class="text-danger"> Username is taken </p>';
+                      }
+                      #if the username doesn't exists, we check if the passwords match
+                      else{
+                        if($password === $re_password) {
+                          #Passwords match! --> add the user info to the database
+                          $hashedPass = hash('sha256', $password);
+                          $query = "INSERT INTO users (username, email, password, type) VALUES ('$username', '$email', '$hashedPass', '$type')";
+                          $result = mysqli_query($db, $query);
+                          echo "YES!";
+                          #return the user to the homepage & log him in
+                          $login_query = "SELECT id from users where username='$username'";
+                          $_SESSION['id'] = $login_query;
+                          $_SESSION['username'] = $username;
+                          $_SESSION['logged_in'] = true;
+                          header("location: index.php");
+                        }
+                        #Passwords don't match --> show "passwords don't match" message
+                        else{
+                          echo "<p class='text-danger'> Passwords don't match! </p>";
+                        }
+                      }
                     }
 
               ?>
