@@ -57,36 +57,158 @@
             <li>
               <a href="#">Services</a>
             </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              >Something <b class="caret"></b
+            ></a>
+            <ul class="dropdown-menu message-dropdown"  style="overflow: hidden; max-height:300px; max-width:200px; overflow: auto;">
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5>
+                      <p class="small text-muted">
+                        <i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
+                      </p>
+                      <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="message-footer">
+                <a href="#">Read All New Messages</a>
+              </li>
+            </ul>
+          </li>
 
-            <li>
-              <a href="javascript:;" data-toggle="collapse" data-target="#demo"
-                ><i class="fa fa-fw fa-arrows-v"></i> About us
-                <i class="fa fa-fw fa-caret-down"></i
-              ></a>
-              <ul id="demo" class="collapse">
-                <li>
-                  <a href="CVs/Abdulaziz.html">Abdulaziz's CV</a>
-                </li>
-                <li>
-                  <a href="CVs/Abdullah.html">Abdullah's CV</a>
-                </li>
+                      <!-- CVs drop down-->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              >About us<b class="caret"></b
+            ></a>
+            <ul class="dropdown-menu message-dropdown"  style="overflow: hidden; max-height:300px; max-width:200px; overflow: auto;">
 
-                <li>
-                  <a href="CVs/Faisal.html">Faisal's CV</a>
-                </li>
 
-                <li>
-                  <a href="CVs/Harith.html">Harith's CV</a>
-                </li>
 
-                <li>
-                  <a href="CVs/Moath.html">Moath's CV</a>
-                </li>
-              </ul> 
-            </li>
+
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <!-- <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5> -->
+                      
+                      <p style="text-align:center; font-size:20px;"><a style="text-decoration: none; color:black;" href="CVs/Abdulaziz.html">Abdulaziz's CV</a></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <!-- <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5> -->
+                      
+                      <p style="text-align:center; font-size:20px;"><a style="text-decoration: none; color:black;" href="CVs/Faisal.html">Faisal's CV</a></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <!-- <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5> -->
+                      
+                      <p style="text-align:center; font-size:20px;"><a style="text-decoration: none; color:black;" href="CVs/Harith.html">Harith's CV</a></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <!-- <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5> -->
+                      
+                      <p style="text-align:center; font-size:20px;"><a style="text-decoration: none; color:black;" href="CVs/Moath.html">Moath's CV</a></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+
+              <li class="message-preview">
+                <a href="#">
+                  <div class="media">
+                    <span class="pull-left">
+                      <img
+                        class="media-object"
+                        src="http://placehold.it/50x50"
+                        alt=""
+                      />
+                    </span>
+                    <div class="media-body">
+                      <!-- <h5 class="media-heading">
+                        <strong>Admin</strong>
+                      </h5> -->
+                      
+                      <p style="text-align:center; font-size:20px;"><a style="text-decoration: none; color:black;" href="CVs/Abdullah.html">Abdullah's CV</a></p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+
+            </ul>
+          </li>
 
             <?php
             #show admin pannel option if the logged in user is an admin
