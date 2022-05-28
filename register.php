@@ -100,7 +100,7 @@
                           $login_query = "SELECT id from users where username='$username'";
                           $result = mysqli_query($db, $login_query);
                           $row = mysqli_fetch_assoc($result);
-
+                          //this a new comment
                           $_SESSION['id'] = $row['id'];
                           $_SESSION['username'] = $username;
                           $_SESSION['logged_in'] = true;
