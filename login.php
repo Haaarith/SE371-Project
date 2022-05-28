@@ -1,8 +1,9 @@
 
 <?php 
+  session_start();
   include "includes/header.php";
   include_once "includes/db.php";
-  session_start();
+
 
 ?>
 
@@ -16,7 +17,7 @@
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
 
 
 
@@ -32,13 +33,7 @@
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="email" name="email" placeholder="email" id="form3Example1c" required class="form-control" />
-                    </div>
-                  </div>
-
+                 
 
 
                   <div class="d-flex flex-row align-items-center mb-4">
@@ -48,51 +43,60 @@
                     </div>
                   </div>
 
-
-
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" placeholder="repeat your password" name="re_password" required id="form3Example4cd" class="form-control" />
-                    </div>
-                  </div>
-
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2"  type="checkbox" value="" id="form2Example3c" />
                     <label class="form-check-label" for="form2Example3">
-                      I agree all statements in daslkdhsadasda <a href="#!">Terms of service</a>
                     </label>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" name="login" class="btn btn-primary btn-lg">Login</button>
                   </div>
 
                 </form>
+                <p>Don't have an account? <a href="register.php">Register here</a></p>
 
 
                 <?php
 
-                    if(isset($_POST['register'])) {
+                    if(isset($_POST['login'])) {
                       $username = $_POST['username'];
-                      $email = $_POST['email'];
                       $password = $_POST['password'];
-                      $re_password = $_POST['re_password'];
-                      $type = "user";
-                      if($password === $re_password) {
-                        $hashedPass = hash('sha256', $password);
-                        $query = "INSERT INTO users (username, email, password, type) VALUES ('$username', '$email', '$hashedPass', '$type')";
-                        $result = mysqli_query($db, $query);
-                        echo "YES!";
-                        $login_query = "SELECT id from users where username='$username'";
-                        $_SESSION['id'] = $login_query;
-                        $_SESSION['username'] = $username;
-                        $_SESSION['logged_in'] = true;
-                        header("location: index.php");
-                      }
+                      //Hashing the inserted password to compare it with the password hashed in the database.
+                      $hashedPassword = hash('sha256', $password);
+
+                      $query = "SELECT id, username, type, password FROM users WHERE username = '$username'";
+
+                      $result = mysqli_query($db, $query);//username, email, password
+                      
+                      if(!$result) die("Something is wrong with the query!");
                       else{
-                        echo "<p class='text-danger'> Passwords don't match! </p>";
+
+
+                        if(mysqli_num_rows($result) == 0){
+                          echo "<p class='text-danger'> Username/Password is incorrect! </p>";
+                        }
+
+                        else{
+                          //There is a row returned from the query.
+                          //username, password
+                          $row = mysqli_fetch_assoc($result);
+                          $usernameDatabase = $row['username'];
+                          $passwordDatabase = $row['password'];
+                          $id = $row['id'];
+                          $type = $row['type'];
+                          if($passwordDatabase !== $hashedPassword){
+                              echo "<p class='text-danger'> Username/Password is incorrect! </p>";
+                          }
+                          else{
+                            $_SESSION['type'] = $type;//either admin or user
+                            $_SESSION['id'] = $id;
+                            $_SESSION['username'] = $username;
+                            $_SESSION['logged_in'] = true;
+                            // header("location: dashboard.php");
+                            header("location: index.php");
+                          }
+                        }
+
                       }
 
                     }
