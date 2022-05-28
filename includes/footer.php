@@ -1,6 +1,4 @@
-
-      <hr />
-
+<hr />
 <!-- Footer -->
 <footer>
   <div class="row">
@@ -20,4 +18,5 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>

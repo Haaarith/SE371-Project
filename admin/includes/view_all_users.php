@@ -1,18 +1,18 @@
 <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Type</th>
-          <th>Make Admin</th>
-          <th>Make User</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Make Admin</th>
+      <th>Make User</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
 
-      <tbody>
-        <?php
+  <tbody>
+    <?php
 
         $id_current_admin = $_SESSION['id'];
         $query = "SELECT * FROM users WHERE id != $id_current_admin";
@@ -79,7 +79,7 @@
         
 
        
-        ?> 
-        
-      </tbody>
+        ?>
+
+  </tbody>
 </table>

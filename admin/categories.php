@@ -1,5 +1,3 @@
-
-
 <?php
   ob_start();
   session_start();
@@ -17,45 +15,45 @@
 ?>
 
 
-    <div id="wrapper">
-      <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <?php include "includes/navigation.php";?>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <?php include "includes/sidebar.php";?>
-        <!-- /.navbar-collapse -->
-      </nav>
+<div id="wrapper">
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <?php include "includes/navigation.php";?>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <?php include "includes/sidebar.php";?>
+    <!-- /.navbar-collapse -->
+  </nav>
 
-      <div id="page-wrapper">
-            <div class="container-fluid">
+  <div id="page-wrapper">
+    <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Welcome
-                          <small><?=$_SESSION['username']?></small>
-                        </h1>
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">
+            Welcome
+            <small><?=$_SESSION['username']?></small>
+          </h1>
 
 
-                        <div class="col-xs-6">
+          <div class="col-xs-6">
 
-                        <?php ?>
-                          <!-- Form of adding category starts:-->
-                          <form action="" method="post">
-                            <div class="form-group">
-                              <label for="cat_title">Add category</label>
-                              <input type="text" class="form-control" name="cat_title">
-                            </div>
+            <?php ?>
+            <!-- Form of adding category starts:-->
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="cat_title">Add category</label>
+                <input type="text" class="form-control" name="cat_title">
+              </div>
 
-                            <div class="form-group">
-                              <input class="btn btn-primary" type="submit" name="submit" value="Add category">
-                            </div>
-                          </form>
-                          <!-- Form of adding category ends:-->
+              <div class="form-group">
+                <input class="btn btn-primary" type="submit" name="submit" value="Add category">
+              </div>
+            </form>
+            <!-- Form of adding category ends:-->
 
-                          <?php 
+            <?php 
                           
                             if(isset($_POST['submit'])) {
                               $cat_to_insert = $_POST['cat_title'];
@@ -109,23 +107,23 @@
 
 
                               ?>
-                              <form action="" method="post">
-                              <div class="form-group">
-                                <label for="cat_title">Edit category</label>
-                                <input type="text" class="form-control" value="<?=$cat_title_to_edit?>" name="cat_name">
-                              </div>
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="cat_title">Edit category</label>
+                <input type="text" class="form-control" value="<?=$cat_title_to_edit?>" name="cat_name">
+              </div>
 
-                            <div class="form-group">
-                              <input class="btn btn-primary" type="submit" name="submit_edit" value="Update">
-                            </div>
-                          </form>
+              <div class="form-group">
+                <input class="btn btn-primary" type="submit" name="submit_edit" value="Update">
+              </div>
+            </form>
 
-                          <?php
+            <?php
                             }
                           ?>
 
 
-                            <?php
+            <?php
                               if(isset($_POST['submit_edit'])) {
                                 $new_cat = $_POST['cat_name'];
                                 $query = "UPDATE categories SET cat_name='$new_cat' WHERE cat_name = '$cat_title_to_edit'";
@@ -139,16 +137,21 @@
                             
                             ?>
 
-                        </div>
+          </div>
 
-                        <div class="col-xs-6">
-                          <table class="table table-bordered table-hover">
-                            <thead>
-                              <tr><th>ID</th><th>Category Name</th><th>Delete</th><th>Edit</th></tr>
-                            </thead>
+          <div class="col-xs-6">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category Name</th>
+                  <th>Delete</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
 
-                            <tbody>
-                              <?php
+              <tbody>
+                <?php
                                 $query = "SELECT * FROM categories";
                                 $result = mysqli_query($db, $query);
 
@@ -165,20 +168,20 @@
                                 }
                               
                               ?>
-                            </tbody>
-                          </table>
-                        </div>
-                       
-                    </div>
-                </div>
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
+              </tbody>
+            </table>
+          </div>
 
         </div>
-      <!-- /#page-wrapper -->
+      </div>
+      <!-- /.row -->
+
     </div>
-    <!-- /#wrapper -->
-    <?php include "includes/footer.php";?>
-    <?php ob_flush(); ?>;
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+<?php include "includes/footer.php";?>
+<?php ob_flush(); ?>;

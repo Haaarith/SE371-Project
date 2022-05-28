@@ -23,30 +23,37 @@
 ?>
 
 
-    <div id="wrapper">
-      <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <?php include "includes/navigation.php";?>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <?php include "includes/sidebar.php";?>
-        <!-- /.navbar-collapse -->
-      </nav>
+<div id="wrapper">
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <?php include "includes/navigation.php";?>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <?php include "includes/sidebar.php";?>
+    <!-- /.navbar-collapse -->
+  </nav>
 
-      <div id="page-wrapper">
-        <p>WELCOME TO POSTS!</p>
-        <div class="container-fluid">
+  <div id="page-wrapper">
+    <p>WELCOME TO POSTS!</p>
+    <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="row">
-              <div class="col-lg-12">
-                
-              <table class="table table-bordered table-hover">
-                            <thead>
-                              <tr><th>ID</th><th>Post content</th><th>Category</th><th>Image</th><th>Username</th><th>Delete</th></tr>
-                            </thead>
-                            <tbody>
-                              <?php
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Post content</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Username</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
                                 #query posts table
                                 $query = "SELECT * FROM posts";
                                 $result = mysqli_query($db, $query);
@@ -86,10 +93,10 @@
                                 }
                               
                               ?>
-                            </tbody>
-                          </table>
-                
-              <?php 
+            </tbody>
+          </table>
+
+          <?php 
                 
                 // if(isset($_GET['source'])) {
                 //   $source = $_GET['source'];
@@ -104,12 +111,12 @@
                 // }
               ?>
 
-              
-              </div>
-          </div>
-          <!-- /.row -->
 
-            </div>
+        </div>
       </div>
-    <!-- /#wrapper -->
-    <?php include "includes/footer.php";?>
+      <!-- /.row -->
+
+    </div>
+  </div>
+  <!-- /#wrapper -->
+  <?php include "includes/footer.php";?>

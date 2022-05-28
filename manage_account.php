@@ -20,10 +20,10 @@
 ?>
 
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <form action="" method="post" enctype="multipart/form-data">    
-            <div class="form-group">
-                <?php
+  <div class="container-fluid">
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
                 $user_result = mysqli_query($db, $user_query);
@@ -39,27 +39,27 @@
                 echo '<label for="cat_id">Retype password</label> <br>';
                 echo '<input type="password" name="re_password"> <br> <br>';
                 ?>
-              
-<!-- <label for="post_category">Post Category ID</label>
+
+        <!-- <label for="post_category">Post Category ID</label>
 <input type="text" class="form-control" name="post_category_id"> -->
 
-</div>
-
-
-     
-<div class="form-group">
-  
-  <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
-  
-</div>
+      </div>
 
 
 
-</form>
+      <div class="form-group">
+
+        <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+
+      </div>
 
 
-</div>
-<!-- /.container-fluid -->
+
+    </form>
+
+
+  </div>
+  <!-- /.container-fluid -->
 
 </div>
 
