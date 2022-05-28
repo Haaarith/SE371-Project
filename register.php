@@ -2,8 +2,13 @@
 <?php 
   include "includes/header.php";
   include_once "includes/db.php";
+<<<<<<< HEAD
   session_start();
 
+=======
+
+//This a brand new change!!!!!!!!!!!!! Hi i am harith 
+>>>>>>> 3d142f7d463031e05911a49ff32665eb05b0a8ee
 ?>
 
 
