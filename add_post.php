@@ -59,7 +59,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">            
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
             </div>
         </form>
     </div>
@@ -75,6 +75,7 @@ if(isset($_POST['publish_post'])) {
   //this is the file name where the image is stored (temporarily)
   $post_image_temp = $_FILES['image']['tmp_name'];
   
+  #clear the post string so that the query isn't ruined
   $post_content = mysqli_real_escape_string($db, $_POST['post_content']);
   $title = $_POST['title'];
   
@@ -83,17 +84,16 @@ if(isset($_POST['publish_post'])) {
   $query_image_insertion = "INSERT INTO images (image_url) VALUES ('$post_image')";
   mysqli_query($db, $query_image_insertion);
   
+  #image query
   $query_image_id = "SELECT id FROM images WHERE image_url = '$post_image'";
   $result = mysqli_query($db, $query_image_id);
 
   $row = mysqli_fetch_assoc($result);
   $image_id = $row['id'];
   
-  echo "Image id is " . $image_id;
-  
+  #add the post to database
   $query = "INSERT INTO posts (cat_id, post_content, image_id, user_id, title) VALUES ($cat_id, '$post_content', $image_id, $user_id, '$title')";
   $result = mysqli_query($db, $query);
-  echo "SO FAR EVERYTHING IS GOOD!";
 
 
     header("Location: index.php");

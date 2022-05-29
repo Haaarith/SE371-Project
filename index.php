@@ -98,7 +98,7 @@
                     <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
                 </p>
                 <hr style="border:1px solid #D3D3D3;" />
-                <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
+                <img class="img-responsive" src="images/<?=$image_url?>" alt="" />
                 <hr style="border:1px solid #D3D3D3;" />
                 <p style="word-wrap: break-word;">
                     <?=$post_content?>
