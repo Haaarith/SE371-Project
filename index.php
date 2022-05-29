@@ -10,14 +10,14 @@
 
 <!-- Page Content -->
 <div class="container">
-  <div class="row">
-    <!-- Blog Entries Column -->
+    <div class="row">
+        <!-- Blog Entries Column -->
 
-    <!-- displaying posts here begins-->
-    <div class="col-md-8">
+        <!-- displaying posts here begins-->
+        <div class="col-md-8">
 
 
-      <?php
+            <?php
           if(isset($_POST['search'])){
             $title = $_POST['search_title'];
 
@@ -81,30 +81,32 @@
             ?>
 
 
-      <!-- <h1 class="page-header">
+            <!-- <h1 class="page-header">
                 Page Heading
                 <small>Secondary Text</small>
               </h1> -->
 
-      <h2>
-        <a href="#"><?=$title?></a>
-      </h2>
-      <p class="lead">by <a href="index.php"><?=$username?></a></p>
-      <p>
-        <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
-      </p>
-      <hr />
-      <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
-      <hr />
-      <p style="word-wrap: break-word;">
-        <?=$post_content?>
-      </p>
-      <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <div class="well">
+            <h2>
+                <a href="#"><?=$title?></a>
+            </h2>
+            <p class="lead">by <a href="index.php"><?=$username?></a></p>
+            <p>
+                <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
+            </p>
+            <hr style="border:1px solid #D3D3D3;"/>
+            <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
+            <hr style="border:1px solid #D3D3D3;"/>
+            <p style="word-wrap: break-word;">
+                <?=$post_content?>
+            </p>
+            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-      <hr />
+          </div>
+          <hr />
 
-      <!-- Pager -->
-      <!-- <ul class="pager">
+            <!-- Pager -->
+            <!-- <ul class="pager">
                 <li class="previous">
                   <a href="#">&larr; Older</a>
                 </li>
@@ -116,51 +118,51 @@
 
 
 
-      <?php
+            <?php
 
           }
         
         ?>
-    </div>
+        </div>
 
 
-    <!-- Blog Sidebar Widgets Column -->
-    <div class="col-md-4">
-      <!-- Blog Search Well -->
-      <div class="well">
-        <h4>Search Blog Title</h4>
-        <form action="" method="post">
-          <div class="input-group">
-            <input type="text" name="search_title" class="form-control" />
-            <span class="input-group-btn">
-              <button class="btn btn-default" name="search" type="submit">
-                <span class="glyphicon glyphicon-search"></span>
-              </button>
-            </span>
-          </div>
-          <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
-        </form>
-        <!-- /.input-group -->
-      </div>
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <!-- Blog Search Well -->
+            <div class="well">
+                <h4>Search Blog Title</h4>
+                <form action="" method="post">
+                    <div class="input-group">
+                        <input type="text" name="search_title" class="form-control" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" name="search" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
+                </form>
+                <!-- /.input-group -->
+            </div>
 
-      <div class="well">
-        <?php
+            <div class="well">
+                <?php
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
               $user_id = $_SESSION['id'];
             ?>
 
 
-        <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
-          <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
-        </a>
+                <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
+                    <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
+                </a>
 
-        <?php
+                <?php
             }
             ?>
-      </div>
+            </div>
 
-      <!-- Side Widget Well -->
-      <!-- <div class="well">
+            <!-- Side Widget Well -->
+            <!-- <div class="well">
         <h4>Side Widget Well</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -168,8 +170,8 @@
           repellat tempore quos aspernatur vero.
         </p>
       </div> -->
+        </div>
     </div>
-  </div>
 
 
 
@@ -179,4 +181,4 @@
 
 
 
-  <?php include "includes/footer.php"; ?>
+    <?php include "includes/footer.php"; ?>
