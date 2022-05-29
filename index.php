@@ -100,7 +100,7 @@
                 <hr style="border:1px solid #D3D3D3;" />
                 <img class="img-responsive" src="images/<?=$image_url?>" alt="" />
                 <hr style="border:1px solid #D3D3D3;" />
-                <p style="word-wrap: break-word;">
+                <p style="word-wrap: break-word; font-size:18px;">
                     <?=$post_content?>
                 </p>
                 <?php
