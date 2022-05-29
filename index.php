@@ -31,7 +31,6 @@
           }
           if(isset($_POST['clear_search'])){
             unset($search_title);
-            // header('location: index.php');
           }
           if(isset($search_title)){
             $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title = '$title'";
