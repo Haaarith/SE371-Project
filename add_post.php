@@ -20,19 +20,19 @@
 ?>
 
 <div id="page-wrapper">
-  <h1 class="text-center">Add post</h1>
-  <div class="container well">
-    <form action="" method="post" enctype="multipart/form-data">
+    <h1 class="text-center">Add post</h1>
+    <div class="container well">
+        <form action="" method="post" enctype="multipart/form-data">
 
-      <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" name="title" id="title">
-      </div>
-      <div class="form-group">
-        <label for="cat_id">Post Category</label>
-        <br>
-        <select name="cat_id" id="cat_id">
-          <?php
+            <div class="form-group">
+                <label for="title">Post Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="cat_id">Post Category</label>
+                <br>
+                <select name="cat_id" id="cat_id">
+                    <?php
 
               $query = "SELECT * FROM categories";
               $result = mysqli_query($db, $query);
@@ -47,38 +47,38 @@
               }
               ?>
 
-        </select>
-        <!-- <label for="post_category">Post Category ID</label>
+                </select>
+                <!-- <label for="post_category">Post Category ID</label>
 <input type="text" class="form-control" name="post_category_id"> -->
 
-      </div>
+            </div>
 
 
-      <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
-      </div>
+            <div class="form-group">
+                <label for="post_image">Post Image</label>
+                <input type="file" name="image">
+            </div>
 
 
-      <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
-      </div>
+            <div class="form-group">
+                <label for="post_content">Post Content</label>
+                <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
 
-      <div class="form-group">
+            <div class="form-group">
 
-        <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
-        <input type="submit" class="btn btn-primary" name="homepage" value="Back to homepage">
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
+                <input type="submit" class="btn btn-primary" name="homepage" value="Back to homepage">
 
-      </div>
-
-
-
-    </form>
+            </div>
 
 
-  </div>
-  <!-- /.container-fluid -->
+
+        </form>
+
+
+    </div>
+    <!-- /.container-fluid -->
 
 </div>
 
@@ -93,7 +93,7 @@ if(isset($_POST['publish_post'])) {
   //this is the file name where the image is stored (temporarily)
   $post_image_temp = $_FILES['image']['tmp_name'];
   
-  $post_content = $_POST['post_content'];
+  $post_content = mysqli_real_escape_string($db, $_POST['post_content']);
   $title = $_POST['title'];
   
   //moving the image from the temporary file into our folder.
