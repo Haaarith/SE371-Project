@@ -13,18 +13,16 @@
     $user_id = $_GET['id'];
   }
   else{
-    
     header("Location: index.php");
   }
-
 ?>
 
 <div id="page-wrapper">
-  <div class="container text-center">
-    <form action="" method="post" enctype="multipart/form-data">
-      <div class="form-group">
-        <h1>Account management</h1>
-        <?php
+    <div class="container text-center">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <h1>Account management</h1>
+                <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
                 $user_result = mysqli_query($db, $user_query);
@@ -41,27 +39,20 @@
                 echo '<input type="password" name="re_password"> <br> <br>';
                 ?>
 
-        <!-- <label for="post_category">Post Category ID</label>
+                <!-- <label for="post_category">Post Category ID</label>
 <input type="text" class="form-control" name="post_category_id"> -->
 
-      </div>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+                <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
+            </div>
+        </form>
 
 
-
-      <div class="form-group">
-
-        <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
-        <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
-
-      </div>
-
-
-
-    </form>
-
-
-  </div>
-  <!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
 
 </div>
 
