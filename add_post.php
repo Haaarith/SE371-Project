@@ -20,7 +20,8 @@
 ?>
 
 <div id="page-wrapper">
-  <div class="container-fluid">
+  <h1 class="text-center">Add post</h1>
+  <div class="container well">
     <form action="" method="post" enctype="multipart/form-data">
 
       <div class="form-group">
@@ -67,6 +68,7 @@
       <div class="form-group">
 
         <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
+        <input type="submit" class="btn btn-primary" name="homepage" value="Back to homepage">
 
       </div>
 
@@ -81,7 +83,9 @@
 </div>
 
 <?php 
-
+if(isset($_POST['homepage'])){
+  header('location: index.php');
+}
 if(isset($_POST['publish_post'])) {
   // $post_id = $row['post_id'];
   $cat_id = $_POST['cat_id'];
