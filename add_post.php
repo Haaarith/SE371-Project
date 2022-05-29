@@ -18,19 +18,19 @@
 ?>
 
 <div id="page-wrapper">
-  <h1 class="text-center">Add post</h1>
-  <div class="container well">
-    <form action="" method="post" enctype="multipart/form-data">
+    <h1 class="text-center">Add post</h1>
+    <div class="container well">
+        <form action="" method="post" enctype="multipart/form-data">
 
-      <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" name="title" id="title">
-      </div>
-      <div class="form-group">
-        <label for="cat_id">Post Category</label>
-        <br>
-        <select name="cat_id" id="cat_id">
-          <?php
+            <div class="form-group">
+                <label for="title">Post Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="cat_id">Post Category</label>
+                <br>
+                <select name="cat_id" id="cat_id">
+                    <?php
 
               $query = "SELECT * FROM categories";
               $result = mysqli_query($db, $query);
@@ -45,24 +45,24 @@
               }
               ?>
 
-        </select>
-      </div>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
-      </div>
+            <div class="form-group">
+                <label for="post_image">Post Image</label>
+                <input type="file" name="image">
+            </div>
 
-      <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
-      </div>
+            <div class="form-group">
+                <label for="post_content">Post Content</label>
+                <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
 
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
-      </div>
-    </form>
-  </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php 
