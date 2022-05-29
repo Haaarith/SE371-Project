@@ -87,23 +87,24 @@
               </h1> -->
 
             <div class="well">
-            <h2>
-                <a href="#"><?=$title?></a>
-            </h2>
-            <p class="lead">by <a href="index.php"><?=$username?></a></p>
-            <p>
-                <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
-            </p>
-            <hr style="border:1px solid #D3D3D3;"/>
-            <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
-            <hr style="border:1px solid #D3D3D3;"/>
-            <p style="word-wrap: break-word;">
-                <?=$post_content?>
-            </p>
-            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <h2>
+                    <a href="#"><?=$title?></a>
+                </h2>
+                <p class="lead">by <a href="index.php"><?=$username?></a></p>
+                <p>
+                    <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
+                </p>
+                <hr style="border:1px solid #D3D3D3;" />
+                <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
+                <hr style="border:1px solid #D3D3D3;" />
+                <p style="word-wrap: break-word;">
+                    <?=$post_content?>
+                </p>
+                <a class="btn btn-primary" href="#">Read More <span
+                        class="glyphicon glyphicon-chevron-right"></span></a>
 
-          </div>
-          <hr />
+            </div>
+            <hr />
 
             <!-- Pager -->
             <!-- <ul class="pager">
@@ -133,14 +134,17 @@
                 <h4>Search Blog Title</h4>
                 <form action="" method="post">
                     <div class="input-group">
-                        <input type="text" name="search_title" class="form-control" />
+                        <input type="text" name="search_title" class="form-control my-5" />
                         <span class="input-group-btn">
                             <button class="btn btn-default" name="search" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
                     </div>
+                    <br>
                     <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
+
+
                 </form>
                 <!-- /.input-group -->
             </div>
