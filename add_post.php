@@ -86,9 +86,6 @@ if(isset($_POST['publish_post'])) {
   $query_image_id = "SELECT id FROM images WHERE image_url = '$post_image'";
   $result = mysqli_query($db, $query_image_id);
 
-
-
-  
   $row = mysqli_fetch_assoc($result);
   $image_id = $row['id'];
   
