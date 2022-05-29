@@ -63,8 +63,9 @@
 
             <div class="form-group">
 
-                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
-
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Update">
+                <input type="submit" class="btn btn-primary" name="Homepage" value="Back to Homepage">
+                
             </div>
 
 
@@ -78,7 +79,9 @@
 </div>
 
 <?php 
-
+if(isset($_POST['Homepage'])){
+    header('location: index.php');
+}
 if(isset($_POST['publish_post'])) {
   // $post_id = $row['post_id'];
   $cat_id = $_POST['cat_id'];
