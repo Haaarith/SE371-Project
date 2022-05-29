@@ -1,11 +1,10 @@
-<?php ob_start(); ?>
-<?php include "includes/header.php";?>
-<?php include_once "includes/db.php";?>
-
-
-<?php
+<?php 
   session_start();
+  ob_start();
+  include "includes/header.php";
   include "functions.php";
+  include_once "includes/db.php";
+  include "includes/navigation.php";
 ?>
 
 <?php
@@ -16,7 +15,6 @@
     
     header("Location: index.php");
   }
-
 ?>
 
 <div id="page-wrapper">
@@ -48,17 +46,12 @@
               ?>
 
                 </select>
-                <!-- <label for="post_category">Post Category ID</label>
-<input type="text" class="form-control" name="post_category_id"> -->
-
             </div>
-
 
             <div class="form-group">
                 <label for="post_image">Post Image</label>
                 <input type="file" name="image">
             </div>
-
 
             <div class="form-group">
                 <label for="post_content">Post Content</label>
@@ -66,20 +59,10 @@
             </div>
 
             <div class="form-group">
-
-                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
-                <input type="submit" class="btn btn-primary" name="homepage" value="Back to homepage">
-
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">            
             </div>
-
-
-
         </form>
-
-
     </div>
-    <!-- /.container-fluid -->
-
 </div>
 
 <?php 
@@ -87,7 +70,6 @@ if(isset($_POST['homepage'])){
   header('location: index.php');
 }
 if(isset($_POST['publish_post'])) {
-  // $post_id = $row['post_id'];
   $cat_id = $_POST['cat_id'];
   $post_image = $_FILES['image']['name'];
   //this is the file name where the image is stored (temporarily)
