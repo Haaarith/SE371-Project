@@ -20,9 +20,10 @@
 ?>
 
 <div id="page-wrapper">
-  <div class="container-fluid">
+  <div class="container text-center">
     <form action="" method="post" enctype="multipart/form-data">
       <div class="form-group">
+        <h1>Account management</h1>
         <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
