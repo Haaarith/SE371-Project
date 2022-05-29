@@ -85,7 +85,7 @@
                                   echo "<td> " . $id . "</td>";
                                   echo '<td style="word-wrap: break-word; max-width: 400px; overflow: hidden;"> ' . $content . '</td>';
                                   echo "<td> " . $cat_name . "</td>";
-                                  echo '<td> <img src="' . $image_url . '" alt="" style"width: 4px; height: 8px;"> </td>';
+                                  echo '<td> <img src="../images/' . $image_url . '" alt="" style"width: 4px; height: 8px;"> </td>';
                                   echo "<td> " . $user_name . "</td>";
                                   echo "<td> <a href=posts.php?delete=".$id.">Delete</a></td>";
                                   echo "</tr>"; 
