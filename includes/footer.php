@@ -5,10 +5,10 @@
     <div class="col-lg-12">
       <p>Copyright &copy; SE371 2022</p>
     </div>
-    <!-- /.col-lg-12 -->
   </div>
-  <!-- /.row -->
 </footer>
+
+
 </div>
 <!-- /.container -->
 
