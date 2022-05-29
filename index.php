@@ -35,8 +35,8 @@
             unset($search_title);
           }
           if(isset($_POST['search'])){
-            $title= $title.'%';
-            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title LIKE '$title'";
+            $title= $title;
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title LIKE '$title%'";
           }else{
             $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
           }
@@ -54,7 +54,7 @@
           if(!$result) {
             die("Something went wrong! " . mysqli_error($db));
           }
-          
+
           if(mysqli_num_rows($result)===0){
             echo 'There is no posts with the title '.$title.'. Try another title.';
           }
