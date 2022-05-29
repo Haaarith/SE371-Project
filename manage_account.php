@@ -18,11 +18,11 @@
 ?>
 
 <div id="page-wrapper">
-    <div class="container text-center">
-        <form action="" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <h1>Account management</h1>
-                <?php
+  <div class="container text-center">
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <h1>Account management</h1>
+        <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
                 $user_result = mysqli_query($db, $user_query);
@@ -30,38 +30,50 @@
                 $user_name = $user['username'];
                 $email = $user['email'];
                 ?>
-                <div class="well">
-                  <label style="font-size:18px" for="username">Edit user name</label> <br>
-                  <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br> <br>
-                  <label style="font-size:18px" for="email">Edit email</label> <br>
-                  <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>"> <br> <br>
-                  <label style="font-size:18px" for="password">Edit password</label> <br>
-                  <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
-                  <label style="font-size:18px" for="re_password">Retype password</label> <br>
-                  <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
-                </div>
-                <!-- <label for="post_category">Post Category ID</label>
+        <div class="well">
+          <label style="font-size:18px" for="username">Edit user name</label> <br>
+          <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br>
+          <br>
+          <label style="font-size:18px" for="email">Edit email</label> <br>
+          <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>"> <br> <br>
+          <label style="font-size:18px" for="password">Edit password</label> <br>
+          <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
+          <label style="font-size:18px" for="re_password">Retype password</label> <br>
+          <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
+        </div>
+        <!-- <label for="post_category">Post Category ID</label>
 <input type="text" class="form-control" name="post_category_id"> -->
 
-            </div>
-            
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
-                <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
-            </div>
-        </form>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+        <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
+      </div>
+    </form>
 
 
-    </div>
-    <!-- /.container-fluid -->
+  </div>
+  <!-- /.container-fluid -->
 
 </div>
 
 <?php
     #display success message if the account has been updated
     if(isset($_SESSION['updated']) && $_SESSION['updated'] == true){
+
       echo "<p class='text-success'> Account updated! </p>";
       $_SESSION['updated'] = false;
+      $id = $_SESSION['id'];
+      $query = "SELECT username FROM users WHERE id = $id";
+      $result = mysqli_query($db, $query);
+      $row = mysqli_fetch_assoc($result);
+      $_SESSION['username'] = $row['username'];
+      echo "The new username is " . $_SESSION['username'];
+
+      
+      // echo "The updated username is " . $_POST['username'];
+      
     }
     #back button heading to homepage
     if(isset($_POST['back'])){
