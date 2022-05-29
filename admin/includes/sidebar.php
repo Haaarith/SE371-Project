@@ -6,16 +6,17 @@
         </li>
 
         <li>
-            <!-- View all posts in the database -->
+            <!-- View all posts -->
             <a href="./posts.php"><i class="fa fa-fw fa fa-bars"></i>Posts</a>
         </li>
 
         <li>
-            <!--  View all the categories in the database -->
+            <!--  View all categories -->
             <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
         </li>
 
         <li>
+          <!-- View users -->
             <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-user"></i> Users
                 <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="demo2" class="collapse">

@@ -14,16 +14,19 @@
   <tbody>
     <?php
 
+        #querying the current admin's ID so that it's NOT displayed during users diaplay
         $id_current_admin = $_SESSION['id'];
         $query = "SELECT * FROM users WHERE id != $id_current_admin";
         $result = mysqli_query($db, $query);
 
+        #looping over the users to fill the table
         while($row = mysqli_fetch_assoc($result)) {
           $id = $row['id'];
           $username = $row['username'];
           $email = $row['email'];
           $type = $row['type'];
          
+          #displaying the table row in addition to using the user's id to be able to use the options
           echo "<tr>
           <td>$id</td>
           <td>$username</td>
@@ -36,6 +39,7 @@
        
         
         }
+        #deleting the user
          if(isset($_GET['delete_user'])) {
            $id = $_GET['delete_user'];
            $query = "DELETE FROM users WHERE id = $id";
@@ -43,6 +47,7 @@
            header('Location: users.php');
          }
 
+         #making the user an admin
         if(isset($_GET['make_admin'])) {
           $id = $_GET['make_admin'];
 
@@ -56,6 +61,7 @@
           }
         }
 
+        #making the user a user (from admin to user)
         if(isset($_GET['make_user'])) {
           $id = $_GET['make_user'];
 
