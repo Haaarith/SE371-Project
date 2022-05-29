@@ -1,7 +1,9 @@
 <?php 
   session_start();
+  ob_start();
   include "includes/header.php";
   include_once "includes/db.php";
+  include "includes/navigation.php";
 ?>
 
 <div class="well">
@@ -86,4 +88,5 @@
 
 <?php 
   include "includes/footer.php";
+  ob_flush();
 ?>
