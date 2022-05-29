@@ -168,21 +168,21 @@
                 <!-- /.input-group -->
             </div>
 
-            <div class="well">
                 <?php
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
               $user_id = $_SESSION['id'];
             ?>
+            <div class="well">
 
 
                 <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
                     <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
                 </a>
 
+            </div>
                 <?php
             }
             ?>
-            </div>
 
             <!-- Side Widget Well -->
             <!-- <div class="well">
