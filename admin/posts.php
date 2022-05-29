@@ -73,6 +73,9 @@
                                   $image_result = mysqli_query($db, $image_query);
                                   $image = mysqli_fetch_assoc($image_result);
                                   $image_url = $image['image_url'];
+                                  
+
+                              
 
                                   #query username
                                   $user_query = "SELECT username from users where id = $row[user_id]";
