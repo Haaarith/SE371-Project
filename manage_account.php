@@ -20,9 +20,10 @@
 ?>
 
 <div id="page-wrapper">
-  <div class="container-fluid">
+  <div class="container text-center">
     <form action="" method="post" enctype="multipart/form-data">
       <div class="form-group">
+        <h1>Account management</h1>
         <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
@@ -50,6 +51,7 @@
       <div class="form-group">
 
         <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+        <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
 
       </div>
 
@@ -63,7 +65,18 @@
 
 </div>
 
-<?php 
+<?php
+    #display success message if the account has been updated
+    if(isset($_SESSION['updated']) && $_SESSION['updated'] == true){
+      echo "<p class='text-success'> Account updated! </p>";
+      $_SESSION['updated'] = false;
+    }
+    #back button heading to homepage
+    if(isset($_POST['back'])){
+      unset($_SESSION['updated']); #unset the variable to not show the message when going back
+      header("Location: index.php");
+    }
+    #submitting the update info
     if(isset($_POST['Submit'])) {
         $username = $_POST['username'];
         $email = $_POST['email'];
@@ -71,11 +84,13 @@
         $re_password = $_POST['re_password'];
 
         #checking if the username already exists in the database
-        $check_user_exists = "SELECT username from users where username='$username'";
+        $check_user_exists = "SELECT * from users where username='$username'";
         $res = mysqli_query($db, $check_user_exists);
+        $row = mysqli_fetch_assoc($res);
         #if the username already exists it shows "username is taken" message
-        if(mysqli_num_rows($res) > 0){
-            echo '<p class="text-danger"> Username is taken </p>';
+        $id = $_SESSION['id'];
+        if($row['username'] == $username && $row['id'] !== $id){
+            echo '<p class="text-danger"> Username is taken! </p>';
         }
         #if the username doesn't exists, we check if the passwords match
         else{
@@ -85,7 +100,9 @@
             $id = $_SESSION['id'];
             $query = "UPDATE users SET username = '$username', email = '$email', password = '$hashedPass' WHERE id = $id";
             $result = mysqli_query($db, $query);
-            header("location: manage_account.php");
+            #Set session variable updated to true to show message after header
+            $_SESSION['updated'] = true;
+            header("Location: manage_account.php?id=$id");
             }
         #Passwords don't match --> show "passwords don't match" message
         else{

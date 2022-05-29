@@ -16,15 +16,43 @@
     <!-- displaying posts here begins-->
     <div class="col-md-8">
 
-      <?php
-          $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
-          $result = mysqli_query($db, $query);
 
+      <?php
+          if(isset($_POST['search'])){
+            $title = $_POST['search_title'];
+
+            $title_query = "SELECT * FROM posts where title = '$title'";
+            $search_result = mysqli_query($db, $title_query);
+
+            
+            if(mysqli_num_rows($search_result) > 0){
+              $row_search = mysqli_fetch_assoc($search_result);
+              $search_title = $row_search['title'];
+              $title = $search_title;
+            }
+          }
+          if(isset($_POST['clear_search'])){
+            unset($search_title);
+          }
+          if(isset($search_title)){
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title = '$title'";
+          }else{
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
+          }
+          
+          if(isset($_GET['category'])){
+            $cat_name = $_GET['category'];
+            $cat_name_query = "SELECT * from categories WHERE cat_name = '$cat_name'";
+            $cat_result = mysqli_query($db, $cat_name_query);
+            $cat_row = mysqli_fetch_assoc($cat_result);
+            $cat_id = $cat_row['id'];
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE cat_id = $cat_id";
+          }
+          
+          $result = mysqli_query($db, $query);
           if(!$result) {
             die("Something went wrong! " . mysqli_error($db));
           }
-          
-
           
           while($row = mysqli_fetch_assoc($result)) {
             $post_content = $row['post_content'];
@@ -63,7 +91,7 @@
       <hr />
       <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
       <hr />
-      <p>
+      <p style="word-wrap: break-word;">
         <?=$post_content?>
       </p>
       <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -95,15 +123,18 @@
     <div class="col-md-4">
       <!-- Blog Search Well -->
       <div class="well">
-        <h4>Blog Search</h4>
-        <div class="input-group">
-          <input type="text" class="form-control" />
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
+        <h4>Search Blog Title</h4>
+        <form action="" method="post">
+          <div class="input-group">
+            <input type="text" name="search_title" class="form-control" />
+            <span class="input-group-btn">
+              <button class="btn btn-default" name="search" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+          <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
+        </form>
         <!-- /.input-group -->
       </div>
 
@@ -124,14 +155,14 @@
       </div>
 
       <!-- Side Widget Well -->
-      <div class="well">
+      <!-- <div class="well">
         <h4>Side Widget Well</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
           repellat tempore quos aspernatur vero.
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 

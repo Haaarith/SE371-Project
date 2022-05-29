@@ -2,7 +2,6 @@
   include "includes/header.php";
   include_once "../includes/db.php";
   session_start();
-
 ?>
 
 <!-- Navigation -->
@@ -24,36 +23,36 @@
 
 
 <div id="wrapper">
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <?php include "includes/navigation.php";?>
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <?php include "includes/sidebar.php";?>
-    <!-- /.navbar-collapse -->
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <?php include "includes/navigation.php";?>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <?php include "includes/sidebar.php";?>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-  <div id="page-wrapper">
-    <p>WELCOME TO POSTS!</p>
-    <div class="container-fluid">
+    <div id="page-wrapper">
+        <p>WELCOME TO POSTS!</p>
+        <div class="container-fluid">
 
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
 
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Post content</th>
-                <th>Category</th>
-                <th>Image</th>
-                <th>Username</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Post content</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Username</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                                 #query posts table
                                 $query = "SELECT * FROM posts";
                                 $result = mysqli_query($db, $query);
@@ -74,6 +73,9 @@
                                   $image_result = mysqli_query($db, $image_query);
                                   $image = mysqli_fetch_assoc($image_result);
                                   $image_url = $image['image_url'];
+                                  
+
+                              
 
                                   #query username
                                   $user_query = "SELECT username from users where id = $row[user_id]";
@@ -84,39 +86,21 @@
                                   #displaying query information in a row
                                   echo "<tr>";
                                   echo "<td> " . $id . "</td>";
-                                  echo "<td> " . $content . "</td>";
+                                  echo '<td style="word-wrap: break-word; max-width: 400px; overflow: hidden;"> ' . $content . '</td>';
                                   echo "<td> " . $cat_name . "</td>";
-                                  echo '<td> <img src="' . $image_url . '" alt=""> </td>';
+                                  echo '<td> <img src="../images/' . $image_url . '" alt="" style"width: 4px; height: 8px;"> </td>';
                                   echo "<td> " . $user_name . "</td>";
                                   echo "<td> <a href=posts.php?delete=".$id.">Delete</a></td>";
                                   echo "</tr>"; 
                                 }
-                              
                               ?>
-            </tbody>
-          </table>
-
-          <?php 
-                
-                // if(isset($_GET['source'])) {
-                //   $source = $_GET['source'];
-                // }
-                // else{
-                //   $source = 1;
-                // }
-                // switch($source) {
-                //   // case 'add_post': include "includes/add_post.php"; break;
-                //   // case 'edit_post': include "includes/edit_post.php"; break;
-                //   // default: include "includes/view_all_posts.php";
-                // }
-              ?>
-
+                        </tbody>
+                    </table>            
+                </div>
+            </div>
+            <!-- /.row -->
 
         </div>
-      </div>
-      <!-- /.row -->
-
     </div>
-  </div>
-  <!-- /#wrapper -->
-  <?php include "includes/footer.php";?>
+    <!-- /#wrapper -->
+    <?php include "includes/footer.php";?>

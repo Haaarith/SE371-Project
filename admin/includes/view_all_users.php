@@ -36,12 +36,12 @@
        
         
         }
-        // if(isset($_GET['delete_user'])) {
-        //   $id = $_GET['delete_user'];
-        //   $query = "DELETE FROM users WHERE id = $id";
-        //   mysqli_query($connection, $query);
-        //   header('Location: users.php');
-        // }
+         if(isset($_GET['delete_user'])) {
+           $id = $_GET['delete_user'];
+           $query = "DELETE FROM users WHERE id = $id";
+           mysqli_query($db, $query);
+           header('Location: users.php');
+         }
 
         if(isset($_GET['make_admin'])) {
           $id = $_GET['make_admin'];
