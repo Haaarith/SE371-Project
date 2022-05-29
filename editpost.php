@@ -1,10 +1,10 @@
-<?php ob_start(); ?>
-<?php include "includes/header.php";?>
-<?php include_once "includes/db.php";?>
-
-<?php
+<?php 
   session_start();
+  ob_start();
+  include "includes/header.php";
   include "functions.php";
+  include_once "includes/db.php";
+  include "includes/navigation.php";
 ?>
 
 <div id="page-wrapper">
@@ -12,7 +12,7 @@
     <div class="container well">
         <form action="" method="post" enctype="multipart/form-data">
 
-            <?php
+        <?php
         $post_id = $_GET['id'];
         $post_query = "SELECT * FROM posts WHERE id= $post_id";
         $query_result = mysqli_query($db, $post_query);
@@ -42,19 +42,8 @@
                 echo "<option value='$cat_id'>$cat_title</option>";
               }
               ?>
-
                 </select>
-                <!-- <label for="post_category">Post Category ID</label>
-<input type="text" class="form-control" name="post_category_id"> -->
-
             </div>
-
-
-            <!-- <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
-      </div> -->
-
 
             <div class="form-group">
                 <label for="post_content">Post Content</label>
@@ -63,20 +52,11 @@
             </div>
 
             <div class="form-group">
-
                 <input type="submit" class="btn btn-primary" name="publish_post" value="Update">
-                <input type="submit" class="btn btn-primary" name="Homepage" value="Back to Homepage">
-
             </div>
-
-
-
         </form>
-
-
     </div>
     <!-- /.container-fluid -->
-
 </div>
 
 <?php 
