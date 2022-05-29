@@ -91,7 +91,7 @@
       <hr />
       <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
       <hr />
-      <p>
+      <p style="word-wrap: break-word;">
         <?=$post_content?>
       </p>
       <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
