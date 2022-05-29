@@ -29,6 +29,8 @@
                     <button type="submit" name="login" class="btn btn-primary btn-lg">Login</button>
                 </div>
                 <!-- Login Button Div End -->
+                
+                <!-- Register Button if you dont have an account -->
                 <p>Don't have an account? <a href="register.php">Register here</a></p>
             </div>
         </div>
