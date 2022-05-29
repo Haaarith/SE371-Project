@@ -153,7 +153,7 @@
                 <?php
             #show admin pannel option if the logged in user is an admin
             if(isset($_SESSION['type']) && $_SESSION['type'] == 'admin'){
-              echo '<li> <i class="fa fa-fw fa-dashboard"></i><a href="./admin"> Admin Pannel</a> </li>';
+              echo '<li> <a href="./admin"> Admin Pannel</a> </li>';
             }
             ?>
                 <?php

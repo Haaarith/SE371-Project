@@ -18,19 +18,19 @@
 ?>
 
 <div id="page-wrapper">
-  <h1 class="text-center">Add post</h1>
-  <div class="container well">
-    <form action="" method="post" enctype="multipart/form-data">
+    <h1 class="text-center">Add post</h1>
+    <div class="container well">
+        <form action="" method="post" enctype="multipart/form-data">
 
-      <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" name="title" id="title">
-      </div>
-      <div class="form-group">
-        <label for="cat_id">Post Category</label>
-        <br>
-        <select name="cat_id" id="cat_id">
-          <?php
+            <div class="form-group">
+                <label for="title">Post Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="cat_id">Post Category</label>
+                <br>
+                <select name="cat_id" id="cat_id">
+                    <?php
 
               $query = "SELECT * FROM categories";
               $result = mysqli_query($db, $query);
@@ -45,24 +45,24 @@
               }
               ?>
 
-        </select>
-      </div>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
-      </div>
+            <div class="form-group">
+                <label for="post_image">Post Image</label>
+                <input type="file" name="image">
+            </div>
 
-      <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
-      </div>
+            <div class="form-group">
+                <label for="post_content">Post Content</label>
+                <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
 
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
-      </div>
-    </form>
-  </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="publish_post" value="Publish">
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php 
@@ -75,6 +75,7 @@ if(isset($_POST['publish_post'])) {
   //this is the file name where the image is stored (temporarily)
   $post_image_temp = $_FILES['image']['tmp_name'];
   
+  #clear the post string so that the query isn't ruined
   $post_content = mysqli_real_escape_string($db, $_POST['post_content']);
   $title = mysqli_real_escape_string($db, $_POST['title']);
   
@@ -83,17 +84,16 @@ if(isset($_POST['publish_post'])) {
   $query_image_insertion = "INSERT INTO images (image_url) VALUES ('$post_image')";
   mysqli_query($db, $query_image_insertion);
   
+  #image query
   $query_image_id = "SELECT id FROM images WHERE image_url = '$post_image'";
   $result = mysqli_query($db, $query_image_id);
 
   $row = mysqli_fetch_assoc($result);
   $image_id = $row['id'];
   
-  echo "Image id is " . $image_id;
-  
+  #add the post to database
   $query = "INSERT INTO posts (cat_id, post_content, image_id, user_id, title) VALUES ($cat_id, '$post_content', $image_id, $user_id, '$title')";
   $result = mysqli_query($db, $query);
-  echo "SO FAR EVERYTHING IS GOOD!";
 
 
     header("Location: index.php");

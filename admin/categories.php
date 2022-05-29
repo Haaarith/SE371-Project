@@ -16,44 +16,44 @@
 
 
 <div id="wrapper">
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <?php include "includes/navigation.php";?>
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <?php include "includes/sidebar.php";?>
-    <!-- /.navbar-collapse -->
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <?php include "includes/navigation.php";?>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <?php include "includes/sidebar.php";?>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-  <div id="page-wrapper">
-    <div class="container-fluid">
+    <div id="page-wrapper">
+        <div class="container-fluid">
 
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header">
-            Welcome
-            <small><?=$_SESSION['username']?></small>
-          </h1>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Welcome
+                        <small><?=$_SESSION['username']?></small>
+                    </h1>
 
 
-          <div class="col-xs-6">
+                    <div class="col-xs-6">
 
-            <?php ?>
-            <!-- Form of adding category starts:-->
-            <form action="" method="post">
-              <div class="form-group">
-                <label for="cat_title">Add category</label>
-                <input type="text" class="form-control" name="cat_title">
-              </div>
+                        <?php ?>
+                        <!-- Form of adding category starts:-->
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="cat_title">Add category</label>
+                                <input type="text" class="form-control" name="cat_title">
+                            </div>
 
-              <div class="form-group">
-                <input class="btn btn-primary" type="submit" name="submit" value="Add category">
-              </div>
-            </form>
-            <!-- Form of adding category ends:-->
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" name="submit" value="Add category">
+                            </div>
+                        </form>
+                        <!-- Form of adding category ends:-->
 
-            <?php 
+                        <?php 
                           
               if(isset($_POST['submit'])) {
                 $cat_to_insert = $_POST['cat_title'];
@@ -114,10 +114,10 @@
                 <input type="text" class="form-control" value="<?=$cat_title_to_edit?>" name="cat_name">
               </div>
 
-              <div class="form-group">
-                <input class="btn btn-primary" type="submit" name="submit_edit" value="Update">
-              </div>
-            </form>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" name="submit_edit" value="Update">
+                            </div>
+                        </form>
 
             <?php
             }
@@ -137,18 +137,18 @@
                             
             ?>
 
-          </div>
+                    </div>
 
-          <div class="col-xs-6">
-            <table class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Category Name</th>
-                  <th>Delete</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
+                    <div class="col-xs-6">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category Name</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
 
               <tbody>
                 <!-- Displaying the body of the table by using the results of the query.-->
@@ -174,14 +174,10 @@
           </div>
 
         </div>
-      </div>
-      <!-- /.row -->
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- /.container-fluid -->
-
-  </div>
-  <!-- /#page-wrapper -->
+    <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
 <?php include "includes/footer.php";?>

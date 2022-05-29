@@ -16,6 +16,7 @@
   }
 ?>
 
+<!-- Displaying the forum and retrieving current user's info to edit -->
 <div id="page-wrapper">
   <div class="container text-center">
     <form action="" method="post" enctype="multipart/form-data">
@@ -29,6 +30,7 @@
                 $user_name = $user['username'];
                 $email = $user['email'];
                 ?>
+        <!--  Displaying the current user's data in the input fields for modification -->
         <div class="well">
           <label style="font-size:18px" for="username">Edit user name</label> <br>
           <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br>
