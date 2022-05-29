@@ -16,10 +16,23 @@
     <!-- displaying posts here begins-->
     <div class="col-md-8">
 
+
       <?php
+          // if(isset($_POST['search'])){
+          //   $title = $_POST['search_title'];
+
+          //   $title_query = "SELECT * FROM posts where title = $title";
+          //   $search_result = mysqli_query($db, $title_query);
+          //   $row_search = mysqli_fetch_assoc($search_result);
+          //   $search_title = $row_search['title'];
+          // }
+
+          // if(!($search_title == NULL)){
+          //   $title = $search_title;
+          // }
           $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
           $result = mysqli_query($db, $query);
-
+            
           if(!$result) {
             die("Something went wrong! " . mysqli_error($db));
           }
@@ -96,14 +109,16 @@
       <!-- Blog Search Well -->
       <div class="well">
         <h4>Blog Search</h4>
-        <div class="input-group">
-          <input type="text" class="form-control" />
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
+        <form action="" method="post">
+          <div class="input-group">
+            <input type="text" name="search_title" class="form-control" />
+            <span class="input-group-btn">
+              <button class="btn btn-default" name="search" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </form>
         <!-- /.input-group -->
       </div>
 
@@ -124,14 +139,14 @@
       </div>
 
       <!-- Side Widget Well -->
-      <div class="well">
+      <!-- <div class="well">
         <h4>Side Widget Well</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
           repellat tempore quos aspernatur vero.
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 

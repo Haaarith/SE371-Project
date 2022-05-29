@@ -70,9 +70,8 @@
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
                   </div>
-
+                  
                 </form>
-
 
                 <?php
 
