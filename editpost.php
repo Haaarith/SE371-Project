@@ -8,7 +8,8 @@
 ?>
 
 <div id="page-wrapper">
-    <div class="container-fluid">
+    <h1 class="text-center">Edit post</h1>
+    <div class="container well">
         <form action="" method="post" enctype="multipart/form-data">
 
             <?php
@@ -65,7 +66,7 @@
 
                 <input type="submit" class="btn btn-primary" name="publish_post" value="Update">
                 <input type="submit" class="btn btn-primary" name="Homepage" value="Back to Homepage">
-                
+
             </div>
 
 
