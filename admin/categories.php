@@ -55,58 +55,59 @@
 
             <?php 
                           
-                            if(isset($_POST['submit'])) {
-                              $cat_to_insert = $_POST['cat_title'];
-                              if(!$cat_to_insert){
-                                echo "<p class= " . "text-danger" . ">Please insert something</p>";
-                              }
-                              else{
-                                $query = "SELECT cat_name FROM categories WHERE cat_name = '$cat_to_insert'";
-                                $result = mysqli_query($db, $query);
-                                if(mysqli_num_rows($result) > 0) {
-                                  echo "<p class= " . "text-danger" . ">Category already exists!</p>";
-                                }
-                                else{
-                                  //In this case, the category isn't in the database, so we insert it.
-                                  $query = "INSERT INTO categories (cat_name) VALUES ('$cat_to_insert')";
-                                  $result = mysqli_query($db, $query);
-                                  if(!$result) {
-                                    die("Something went wrong! " . mysqli_error($db));
-                                  }
-                                  else{
-                                    echo "<p class= " . "text-success" . ">Category added!</p>";
+              if(isset($_POST['submit'])) {
+                $cat_to_insert = $_POST['cat_title'];
+                if(!$cat_to_insert){
+                  echo "<p class= " . "text-danger" . ">Please insert something</p>";
+                }
+                else{
+                  $query = "SELECT cat_name FROM categories WHERE cat_name = '$cat_to_insert'";
+                  $result = mysqli_query($db, $query);
+                  if(mysqli_num_rows($result) > 0) {
+                    echo "<p class= " . "text-danger" . ">Category already exists!</p>";
+                  }
+                  else{
+                    //In this case, the category isn't in the database, so we insert it.
+                    $query = "INSERT INTO categories (cat_name) VALUES ('$cat_to_insert')";
+                    $result = mysqli_query($db, $query);
+                    if(!$result) {
+                      die("Something went wrong! " . mysqli_error($db));
+                    }
+                    else{
+                      echo "<p class= " . "text-success" . ">Category added!</p>";
 
-                                  }
-  
-                                }
-                              }
-                            }
+                    }
 
-
-                            if(isset($_GET['delete'])) {
-                              $id_to_delete = $_GET['delete'];
-                              $query = "DELETE FROM categories WHERE id = $id_to_delete";
-                              $result = mysqli_query($db, $query);
-                              if(!$result) {
-                                die("Something went wrong! " . mysqli_error($db));
-                              }                         
-                              header("location: categories.php");   
-                            }
+                  }
+                }
+              }
 
 
+              if(isset($_GET['delete'])) {
+                # Editing the name of the category by getting its id from the URL.
+                $id_to_delete = $_GET['delete'];
+                $query = "DELETE FROM categories WHERE id = $id_to_delete";
+                $result = mysqli_query($db, $query);
+                if(!$result) {
+                  die("Something went wrong! " . mysqli_error($db));
+                }                         
+                header("location: categories.php");   
+              }
 
-                            if(isset($_GET['edit'])) {
-                              $id_to_edit = $_GET['edit'];
-                              $query = "SELECT * FROM categories WHERE id = $id_to_edit";
-                              $result = mysqli_query($db, $query);
-                              if(!$result) {
-                                die("Something went wrong! " . mysqli_error($db));
-                              }                    
-                              $row = mysqli_fetch_assoc($result);        
-                              $cat_title_to_edit = $row['cat_name'];
 
 
-                              ?>
+              if(isset($_GET['edit'])) {
+                # Editing the name of the category by getting its id from the URL.
+                $id_to_edit = $_GET['edit'];
+                $query = "SELECT * FROM categories WHERE id = $id_to_edit";
+                $result = mysqli_query($db, $query);
+                if(!$result) {
+                  die("Something went wrong! " . mysqli_error($db));
+                }                    
+                $row = mysqli_fetch_assoc($result);        
+                $cat_title_to_edit = $row['cat_name'];
+
+                ?>
             <form action="" method="post">
               <div class="form-group">
                 <label for="cat_title">Edit category</label>
@@ -119,23 +120,22 @@
             </form>
 
             <?php
-                            }
-                          ?>
+            }
+            ?>
 
 
             <?php
-                              if(isset($_POST['submit_edit'])) {
-                                $new_cat = $_POST['cat_name'];
-                                $query = "UPDATE categories SET cat_name='$new_cat' WHERE cat_name = '$cat_title_to_edit'";
-                                $result = mysqli_query($db, $query);
-                                if(!$result) {
-                                  die("Something went wrong! " . mysqli_error($db));
-                                }       
-                                header("location: categories.php");
-                              }
+              if(isset($_POST['submit_edit'])) {
+                $new_cat = $_POST['cat_name'];
+                $query = "UPDATE categories SET cat_name='$new_cat' WHERE cat_name = '$cat_title_to_edit'";
+                $result = mysqli_query($db, $query);
+                if(!$result) {
+                  die("Something went wrong! " . mysqli_error($db));
+                }       
+                header("location: categories.php");
+              }
                             
-                            
-                            ?>
+            ?>
 
           </div>
 
@@ -151,23 +151,24 @@
               </thead>
 
               <tbody>
+                <!-- Displaying the body of the table by using the results of the query.-->
                 <?php
-                                $query = "SELECT * FROM categories";
-                                $result = mysqli_query($db, $query);
+                    $query = "SELECT * FROM categories";
+                    $result = mysqli_query($db, $query);
 
-                                while($row = mysqli_fetch_assoc($result)) {
-                                  $id = $row['id'];
-                                  $cat_name = $row['cat_name'];
-                                  echo "<tr>";
-                                  echo "<td> " . $id . "</td>";
-                                  echo "<td> " . $cat_name . "</td>";
-                                  echo "<td> <a href=categories.php?delete=".$id.">Delete</a></td>";
-                                  echo "<td> <a href=categories.php?edit=".$id.">Edit</a></td>";
+                    while($row = mysqli_fetch_assoc($result)) {
+                      $id = $row['id'];
+                      $cat_name = $row['cat_name'];
+                      echo "<tr>";
+                      echo "<td> " . $id . "</td>";
+                      echo "<td> " . $cat_name . "</td>";
+                      echo "<td> <a href=categories.php?delete=".$id.">Delete</a></td>";
+                      echo "<td> <a href=categories.php?edit=".$id.">Edit</a></td>";
 
-                                  echo "</tr>"; 
-                                }
+                      echo "</tr>"; 
+                    }
                               
-                              ?>
+              ?>
               </tbody>
             </table>
           </div>
