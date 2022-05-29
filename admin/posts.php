@@ -69,10 +69,13 @@
                                   $cat_name = $category['cat_name'];
 
                                   #query image url
-                                  $image_query = "SELECT image_url from images where id = $row[image_id]";
+                                  $image_query = "SELECT image_url from images where id = $image_id";
                                   $image_result = mysqli_query($db, $image_query);
                                   $image = mysqli_fetch_assoc($image_result);
                                   $image_url = $image['image_url'];
+                                  
+
+                              
 
                                   #query username
                                   $user_query = "SELECT username from users where id = $row[user_id]";
