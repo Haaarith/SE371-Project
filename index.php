@@ -23,6 +23,8 @@
 
             $title_query = "SELECT * FROM posts where title = '$title'";
             $search_result = mysqli_query($db, $title_query);
+
+            
             if(mysqli_num_rows($search_result) > 0){
               $row_search = mysqli_fetch_assoc($search_result);
               $search_title = $row_search['title'];
@@ -31,6 +33,9 @@
           }
           if(isset($_POST['clear_search'])){
             unset($search_title);
+          }
+          if(isset($_GET['category'])){
+            $cat_name = $_GET['category'];
           }
           if(isset($search_title)){
             $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title = '$title'";

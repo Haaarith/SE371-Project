@@ -24,7 +24,7 @@
           <ul class="dropdown-menu message-dropdown"
             style="overflow: hidden; max-height:400px; max-width:600px; overflow: auto;">
             <li class="message-preview">
-              <?php
+                  <?php
                   #query categories
                   $cat_query = "SELECT * from categories";
                   $result = mysqli_query($db, $cat_query);
@@ -32,18 +32,17 @@
                   #loop over the catogries and add them to the dropdown menu
                   while($row = mysqli_fetch_assoc($result)){
                     $cat_name = $row['cat_name'];
-                    
-                    echo "<a href=index.php?category=". $cat_name .">";
-                    echo  '<div class="media">';
-                    echo    '<div class="media-body">';
-                    echo      '<h5 class="media-heading">';
-                    echo        '<strong>'. $cat_name .'</strong>';
-                    echo      '</h5>';
-                    echo    '</div>';
-                    echo  '</div>';
-                    echo '</a>';
-                  }
-                ?>
+                  ?>
+                    <a href="index.php?category=<?php echo $cat_name ?>">
+                      <div class="media">
+                        <div class="media-body">
+                          <h5 class="media-heading">
+                            <strong> <?php echo $cat_name ?> </strong>
+                          </h5>
+                        </div>
+                      </div>
+                    </a>
+                  <?php } ?>
             </li>
           </ul>
         </li>
@@ -167,25 +166,26 @@
             }
             ?>
       </ul>
-      <?php
+            <?php
             #show logout option if user is logged in
-            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
-              echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
-              echo '<ul class="nav navbar-nav">';
-              echo    '<li> <a href="logout.php">Logout</a> </li>';
-              echo '</ul>';
-              echo '</dv>';
-            }
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){ 
+            ?>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li> <a href="logout.php">Logout</a> </li>
+                </ul>
+              </div>
+            <?php }
             #show login / register options if user isn't logged in
-            else{
-              echo '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
-              echo '<ul class="nav navbar-nav">';
-              echo    '<li> <a href="login.php">Login</a> </li>';
-              echo    '<li> <a href="register.php">Register</a> </li>';
-              echo '</ul>';
-              echo '</dv>';
-            }
-          ?>
+            else{ 
+            ?>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li> <a href="login.php">Login</a> </li>
+                  <li> <a href="register.php">Register</a> </li>
+                </ul>
+              </div>
+            <?php } ?>
     </div>
     <!-- /.navbar-collapse -->
   </div>
