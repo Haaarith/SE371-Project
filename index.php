@@ -34,21 +34,25 @@
           if(isset($_POST['clear_search'])){
             unset($search_title);
           }
-          if(isset($_GET['category'])){
-            $cat_name = $_GET['category'];
-          }
           if(isset($search_title)){
             $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title = '$title'";
           }else{
             $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
           }
+          
+          if(isset($_GET['category'])){
+            $cat_name = $_GET['category'];
+            $cat_name_query = "SELECT * from categories WHERE cat_name = '$cat_name'";
+            $cat_result = mysqli_query($db, $cat_name_query);
+            $cat_row = mysqli_fetch_assoc($cat_result);
+            $cat_id = $cat_row['id'];
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE cat_id = $cat_id";
+          }
+          
           $result = mysqli_query($db, $query);
-
           if(!$result) {
             die("Something went wrong! " . mysqli_error($db));
           }
-          
-
           
           while($row = mysqli_fetch_assoc($result)) {
             $post_content = $row['post_content'];

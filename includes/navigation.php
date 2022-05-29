@@ -28,7 +28,17 @@
                   #query categories
                   $cat_query = "SELECT * from categories";
                   $result = mysqli_query($db, $cat_query);
-
+                  ?>
+                  <a href="index.php">
+                      <div class="media">
+                        <div class="media-body">
+                          <h5 class="media-heading">
+                            <strong> All categories</strong>
+                          </h5>
+                        </div>
+                      </div>
+                    </a>
+                  <?php
                   #loop over the catogries and add them to the dropdown menu
                   while($row = mysqli_fetch_assoc($result)){
                     $cat_name = $row['cat_name'];
