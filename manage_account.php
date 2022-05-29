@@ -1,10 +1,9 @@
-<?php ob_start(); ?>
-<?php include "includes/header.php";?>
-<?php include_once "includes/db.php";?>
-
-
-<?php
+<?php 
   session_start();
+  ob_start();
+  include "includes/header.php";
+  include_once "includes/db.php";
+  include "includes/navigation.php";
   include "functions.php";
 ?>
 
@@ -18,11 +17,11 @@
 ?>
 
 <div id="page-wrapper">
-  <div class="container text-center">
-    <form action="" method="post" enctype="multipart/form-data">
-      <div class="form-group">
-        <h1>Account management</h1>
-        <?php
+    <div class="container text-center">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <h1>Account management</h1>
+                <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
                 $user_result = mysqli_query($db, $user_query);
@@ -30,32 +29,26 @@
                 $user_name = $user['username'];
                 $email = $user['email'];
                 ?>
-        <div class="well">
-          <label style="font-size:18px" for="username">Edit user name</label> <br>
-          <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br>
-          <br>
-          <label style="font-size:18px" for="email">Edit email</label> <br>
-          <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>"> <br> <br>
-          <label style="font-size:18px" for="password">Edit password</label> <br>
-          <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
-          <label style="font-size:18px" for="re_password">Retype password</label> <br>
-          <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
-        </div>
-        <!-- <label for="post_category">Post Category ID</label>
-<input type="text" class="form-control" name="post_category_id"> -->
+                <div class="well">
+                    <label style="font-size:18px" for="username">Edit user name</label> <br>
+                    <input class="input-lg" style="width:50%;" type="text" name="username"
+                        value="<?php echo $user_name ?>"> <br>
+                    <br>
+                    <label style="font-size:18px" for="email">Edit email</label> <br>
+                    <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>">
+                    <br> <br>
+                    <label style="font-size:18px" for="password">Edit password</label> <br>
+                    <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
+                    <label style="font-size:18px" for="re_password">Retype password</label> <br>
+                    <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
+                </div>
 
-      </div>
-
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
-        <input type="submit" class="btn btn-primary" name="back" value="Back to Homepage">
-      </div>
-    </form>
-
-
-  </div>
-  <!-- /.container-fluid -->
-
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php
