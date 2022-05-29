@@ -36,9 +36,9 @@
           }
           if(isset($_POST['search'])){
             $title= $title;
-            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title LIKE '$title%'";
+            $query = "SELECT id, post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title LIKE '$title%'";
           }else{
-            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
+            $query = "SELECT id, post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
           }
           
           if(isset($_GET['category'])){
@@ -47,7 +47,7 @@
             $cat_result = mysqli_query($db, $cat_name_query);
             $cat_row = mysqli_fetch_assoc($cat_result);
             $cat_id = $cat_row['id'];
-            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE cat_id = $cat_id";
+            $query = "SELECT id, post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE cat_id = $cat_id";
           }
           
           $result = mysqli_query($db, $query);
@@ -60,6 +60,7 @@
           }
           
           while($row = mysqli_fetch_assoc($result)) {
+            $post_id = $row['id'];
             $post_content = $row['post_content'];
             $image_id = $row['image_id'];
             $user_id = $row['user_id'];
@@ -100,9 +101,18 @@
                 <p style="word-wrap: break-word;">
                     <?=$post_content?>
                 </p>
-                <a class="btn btn-primary" href="#">Read More <span
-                        class="glyphicon glyphicon-chevron-right"></span></a>
-
+                <?php
+                #check if user is logged in
+                if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                  $id = $_SESSION['id'];
+                }
+                #check if logged user's id is the same as the posts's user id then show the buttons
+                if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && $id == $user_id){
+                ?>
+                <!-- Edit post & delete post buttons -->
+                <a class="btn btn-primary" href="editpost.php?id=<?php echo $post_id?>"> Edit post </a>
+                <a class="btn btn-primary" href="deletepost.php?id=<?php echo $post_id?>"> Delete post </a>
+                <?php } ?>
             </div>
             <hr />
 
