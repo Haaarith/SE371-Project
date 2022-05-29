@@ -9,15 +9,7 @@
       <!-- View all posts in the database -->
       <a href="./posts.php"><i class="fa fa-fw fa fa-bars"></i>Posts</a>
     </li>
-    <li>
-      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa fa-bars"></i> Posts
-        <i class="fa fa-fw fa-caret-down"></i></a>
-      <ul id="demo" class="collapse">
-        <li>
-          <a href="./posts.php?source=add_post">add post</a>
-        </li>
-      </ul>
-    </li>
+
 
 
     <li>
