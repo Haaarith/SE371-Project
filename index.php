@@ -10,13 +10,13 @@
 
 <!-- Page Content -->
 <div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
+  <div class="row">
+    <!-- Blog Entries Column -->
 
-        <!-- displaying posts here begins-->
-        <div class="col-md-8">
+    <!-- displaying posts here begins-->
+    <div class="col-md-8">
 
-            <?php
+      <?php
           #checking if the user wanted to search something
           if(isset($_POST['search'])){
             $title = $_POST['search_title'];
@@ -47,7 +47,7 @@
           #query posts by chosen category from the nav bar
           if(isset($_GET['category'])){
             #getting the category name & querying it's row from databse
-            $cat_name = $_GET['category'];
+            $cat_name = mysqli_real_escape_string($db, $_GET['category']);
             $cat_name_query = "SELECT * from categories WHERE cat_name = '$cat_name'";
             $cat_result = mysqli_query($db, $cat_name_query);
             $cat_row = mysqli_fetch_assoc($cat_result);
@@ -88,22 +88,22 @@
 
             ?>
 
-            <!-- Displaying the posts -->
-            <div class="well">
-                <h2>
-                    <a href="#"><?=$title?></a>
-                </h2>
-                <p class="lead">by <a href="index.php"><?=$username?></a></p>
-                <p>
-                    <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
-                </p>
-                <hr style="border:1px solid #D3D3D3;" />
-                <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
-                <hr style="border:1px solid #D3D3D3;" />
-                <p style="word-wrap: break-word;">
-                    <?=$post_content?>
-                </p>
-                <?php
+      <!-- Displaying the posts -->
+      <div class="well">
+        <h2>
+          <a href="#"><?=$title?></a>
+        </h2>
+        <p class="lead">by <a href="index.php"><?=$username?></a></p>
+        <p>
+          <span class="glyphicon glyphicon-time"></span> <?=$post_time?>
+        </p>
+        <hr style="border:1px solid #D3D3D3;" />
+        <img class="img-responsive" src="images/<?=$image_url?>" alt="post images" />
+        <hr style="border:1px solid #D3D3D3;" />
+        <p style="word-wrap: break-word;">
+          <?=$post_content?>
+        </p>
+        <?php
                 #check if user is logged in
                 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                   $id = $_SESSION['id'];
@@ -111,53 +111,53 @@
                 #check if logged user's id is the same as the posts's user id then show the buttons
                 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && $id == $user_id){
                 ?>
-                <!-- Edit post & delete post buttons -->
-                <a class="btn btn-primary" href="editpost.php?id=<?php echo $post_id?>"> Edit post </a>
-                <a class="btn btn-primary" href="deletepost.php?id=<?php echo $post_id?>"> Delete post </a>
-                <?php } ?>
-            </div>
-            <hr />
+        <!-- Edit post & delete post buttons -->
+        <a class="btn btn-primary" href="editpost.php?id=<?php echo $post_id?>"> Edit post </a>
+        <a class="btn btn-primary" href="deletepost.php?id=<?php echo $post_id?>"> Delete post </a>
+        <?php } ?>
+      </div>
+      <hr />
 
-            <?php } ?>
+      <?php } ?>
 
-        </div>
+    </div>
 
 
-        <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
-            <!-- Blog Search starts -->
-            <div class="well">
-                <h4>Search Blog Title</h4>
-                <form action="" method="post">
-                    <div class="input-group">
-                        <input type="text" name="search_title" class="form-control my-5" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" name="search" type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <br>
-                    <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
-                    <!-- Blog Search ends -->
-                </form>
-                <!-- /.input-group -->
-            </div>
+    <!-- Blog Sidebar Widgets Column -->
+    <div class="col-md-4">
+      <!-- Blog Search starts -->
+      <div class="well">
+        <h4>Search Blog Title</h4>
+        <form action="" method="post">
+          <div class="input-group">
+            <input type="text" name="search_title" class="form-control my-5" />
+            <span class="input-group-btn">
+              <button class="btn btn-default" name="search" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+          <br>
+          <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
+          <!-- Blog Search ends -->
+        </form>
+        <!-- /.input-group -->
+      </div>
 
-            <?php
+      <?php
             #showing the "add post" button only to logged in users
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
               $user_id = $_SESSION['id'];
             ?>
-            <div class="well">
-                <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
-                    <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
-                </a>
-            </div>
-            <?php
+      <div class="well">
+        <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
+          <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
+        </a>
+      </div>
+      <?php
             }
             ?>
-        </div>
     </div>
+  </div>
 
-<?php include "includes/footer.php"; ?>
+  <?php include "includes/footer.php"; ?>

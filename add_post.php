@@ -98,7 +98,7 @@ if(isset($_POST['publish_post'])) {
 
     header("Location: index.php");
 
-  }
+}
 ?>
 <?php include "includes/footer.php";?>
 <?php ob_flush(); ?>

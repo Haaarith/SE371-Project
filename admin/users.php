@@ -51,6 +51,8 @@
 
                   switch($source) {
                     case 'view_all_users': include "includes/view_all_users.php" ; break;
+                    case 'add_user': include "includes/add_user.php" ; break;
+
                     default: include "includes/view_all_users.php"; break;
                   }
                 

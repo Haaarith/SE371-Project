@@ -17,11 +17,11 @@
 ?>
 
 <div id="page-wrapper">
-    <div class="container text-center">
-        <form action="" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <h1>Account management</h1>
-                <?php
+  <div class="container text-center">
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <h1>Account management</h1>
+        <?php
                 $id = $_GET['id'];
                 $user_query = "SELECT * from users where id = $id";
                 $user_result = mysqli_query($db, $user_query);
@@ -29,26 +29,25 @@
                 $user_name = $user['username'];
                 $email = $user['email'];
                 ?>
-                <div class="well">
-                    <label style="font-size:18px" for="username">Edit user name</label> <br>
-                    <input class="input-lg" style="width:50%;" type="text" name="username"
-                        value="<?php echo $user_name ?>"> <br>
-                    <br>
-                    <label style="font-size:18px" for="email">Edit email</label> <br>
-                    <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>">
-                    <br> <br>
-                    <label style="font-size:18px" for="password">Edit password</label> <br>
-                    <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
-                    <label style="font-size:18px" for="re_password">Retype password</label> <br>
-                    <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
-                </div>
+        <div class="well">
+          <label style="font-size:18px" for="username">Edit user name</label> <br>
+          <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br>
+          <br>
+          <label style="font-size:18px" for="email">Edit email</label> <br>
+          <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>">
+          <br> <br>
+          <label style="font-size:18px" for="password">Edit password</label> <br>
+          <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
+          <label style="font-size:18px" for="re_password">Retype password</label> <br>
+          <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
+        </div>
 
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
-                </div>
-            </div>
-        </form>
-    </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" name="Submit" value="Sumbit">
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <?php
@@ -75,10 +74,11 @@
     }
     #submitting the update info
     if(isset($_POST['Submit'])) {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $re_password = $_POST['re_password'];
+        #Filtering input so that it doesn't corrupt the database.
+        $username = mysqli_real_escape_string($db, $_POST['username']);
+        $email = mysqli_real_escape_string($db, $_POST['email']);
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $re_password =mysqli_real_escape_string($db, $_POST['re_password']);
 
         #checking if the username already exists in the database
         $check_user_exists = "SELECT * from users where username='$username'";

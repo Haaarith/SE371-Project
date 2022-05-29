@@ -7,43 +7,42 @@
 ?>
 
 <div class="well">
-    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
-    <form class="" method="POST">
-        <div class="align-items-center ">
-            <!--Div for centring the form  -->
-            <div style="display: flex; align-items:center; flex-direction:column; gap:15px">
-                <!-- Username field div Start -->
-                <div class="form-outline text-center" style="width: 35%;">
-                    <input type="text" name="username" placeholder="username" id="form3Example1c" required
-                        class="form-control" />
-                </div>
-                <!-- Username field div End -->
-
-                <!-- Password field div Start -->
-                <div class="form-outline flex-fill  " style="width: 35%; ">
-                    <input type="password" name="password" placeholder="password" id="form3Example1c" required
-                        class="form-control" />
-                </div>
-                <!-- Password field div End -->
-
-                <!-- Login Button Div Start -->
-                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" name="login" class="btn btn-primary btn-lg">Login</button>
-                </div>
-                <!-- Login Button Div End -->
-                
-                <!-- Register Button if you dont have an account -->
-                <p>Don't have an account? <a href="register.php">Register here</a></p>
-            </div>
+  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
+  <form class="" method="POST">
+    <div class="align-items-center ">
+      <!--Div for centring the form  -->
+      <div style="display: flex; align-items:center; flex-direction:column; gap:15px">
+        <!-- Username field div Start -->
+        <div class="form-outline text-center" style="width: 35%;">
+          <input type="text" name="username" placeholder="username" id="form3Example1c" required class="form-control" />
         </div>
-    </form>
+        <!-- Username field div End -->
+
+        <!-- Password field div Start -->
+        <div class="form-outline flex-fill  " style="width: 35%; ">
+          <input type="password" name="password" placeholder="password" id="form3Example1c" required
+            class="form-control" />
+        </div>
+        <!-- Password field div End -->
+
+        <!-- Login Button Div Start -->
+        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+          <button type="submit" name="login" class="btn btn-primary btn-lg">Login</button>
+        </div>
+        <!-- Login Button Div End -->
+
+        <!-- Register Button if you dont have an account -->
+        <p>Don't have an account? <a href="register.php">Register here</a></p>
+      </div>
+    </div>
+  </form>
 </div>
 
 <?php
 
                     if(isset($_POST['login'])) {
-                      $username = $_POST['username'];
-                      $password = $_POST['password'];
+                      $username = mysqli_real_escape_string($db, $_POST['username']);
+                      $password = mysqli_real_escape_string($db, $_POST['password']);
                       //Hashing the inserted password to compare it with the password hashed in the database.
                       $hashedPassword = hash('sha256', $password);
 
