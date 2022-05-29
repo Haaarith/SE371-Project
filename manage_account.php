@@ -29,16 +29,17 @@
                 $user = mysqli_fetch_assoc($user_result);
                 $user_name = $user['username'];
                 $email = $user['email'];
-                echo '<label for="cat_id">Edit user name</label> <br>';
-                echo '<input type="text" name="username" value="'.$user_name.'"> <br> <br>';
-                echo '<label for="cat_id">Edit email</label> <br>';
-                echo '<input type="text" name="email" value="'.$email.'"> <br> <br>';
-                echo '<label for="cat_id">Edit password</label> <br>';
-                echo '<input type="password" name="password"> <br> <br>';
-                echo '<label for="cat_id">Retype password</label> <br>';
-                echo '<input type="password" name="re_password"> <br> <br>';
                 ?>
-
+                <div class="well">
+                  <label style="font-size:18px" for="username">Edit user name</label> <br>
+                  <input class="input-lg" style="width:50%;" type="text" name="username" value="<?php echo $user_name ?>"> <br> <br>
+                  <label style="font-size:18px" for="email">Edit email</label> <br>
+                  <input class="input-lg" style="width:50%;" type="text" name="email" value="<?php echo $email ?>"> <br> <br>
+                  <label style="font-size:18px" for="password">Edit password</label> <br>
+                  <input class="input-lg" style="width:50%;" type="password" name="password"> <br> <br>
+                  <label style="font-size:18px" for="re_password">Retype password</label> <br>
+                  <input class="input-lg" style="width:50%;" type="password" name="re_password"> <br> <br>
+                </div>
                 <!-- <label for="post_category">Post Category ID</label>
 <input type="text" class="form-control" name="post_category_id"> -->
 
