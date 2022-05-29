@@ -2,17 +2,17 @@
   <ul class="nav navbar-nav side-nav">
     <li>
       <!-- link to homepage -->
-      <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Homepage</a>
+      <a href="../index.php"><i class="fa fa-fw fa fa-home"></i> Homepage</a>
     </li>
 
     <li>
-      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Posts
+      <!-- View all posts in the database -->
+      <a href="./posts.php"><i class="fa fa-fw fa fa-bars"></i>Posts</a>
+    </li>
+    <li>
+      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa fa-bars"></i> Posts
         <i class="fa fa-fw fa-caret-down"></i></a>
       <ul id="demo" class="collapse">
-        <li>
-          <!-- View all posts in the database -->
-          <a href="./posts.php">view all posts</a>
-        </li>
         <li>
           <a href="./posts.php?source=add_post">add post</a>
         </li>
