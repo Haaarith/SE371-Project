@@ -29,12 +29,8 @@
       <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
     </li>
 
-
-
-
-
     <li>
-      <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Users
+      <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-user"></i> Users
         <i class="fa fa-fw fa-caret-down"></i></a>
       <ul id="demo2" class="collapse">
         <li>
