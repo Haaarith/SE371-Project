@@ -16,7 +16,6 @@
         <!-- displaying posts here begins-->
         <div class="col-md-8">
 
-
             <?php
           #checking if the user wanted to search something
           if(isset($_POST['search'])){
@@ -87,15 +86,9 @@
             $row_url = mysqli_fetch_assoc($result_url);
             $image_url = $row_url['image_url'];
 
-
             ?>
 
-
-            <!-- <h1 class="page-header">
-                Page Heading
-                <small>Secondary Text</small>
-              </h1> -->
-
+            <!-- Displaying the posts -->
             <div class="well">
                 <h2>
                     <a href="#"><?=$title?></a>
@@ -125,30 +118,14 @@
             </div>
             <hr />
 
-            <!-- Pager -->
-            <!-- <ul class="pager">
-                <li class="previous">
-                  <a href="#">&larr; Older</a>
-                </li>
-                <li class="next">
-                  <a href="#">Newer &rarr;</a>
-                </li>
-              </ul> -->
+            <?php } ?>
 
-
-
-
-            <?php
-
-          }
-        
-        ?>
         </div>
 
 
         <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
-            <!-- Blog Search Well -->
+            <!-- Blog Search starts -->
             <div class="well">
                 <h4>Search Blog Title</h4>
                 <form action="" method="post">
@@ -162,46 +139,25 @@
                     </div>
                     <br>
                     <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
-
-
+                    <!-- Blog Search ends -->
                 </form>
                 <!-- /.input-group -->
             </div>
 
-                <?php
+            <?php
+            #showing the "add post" button only to logged in users
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
               $user_id = $_SESSION['id'];
             ?>
             <div class="well">
-
-
                 <a href="add_post.php?id=<?=$user_id?> " class=text-decoration-none btn btn-primary>
                     <button type="button" class="btn btn-primary" btn-primary="" btn-lg="">Add post </button>
                 </a>
-
             </div>
-                <?php
+            <?php
             }
             ?>
-
-            <!-- Side Widget Well -->
-            <!-- <div class="well">
-        <h4>Side Widget Well</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
-          repellat tempore quos aspernatur vero.
-        </p>
-      </div> -->
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-    <?php include "includes/footer.php"; ?>
+<?php include "includes/footer.php"; ?>
