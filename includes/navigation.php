@@ -79,7 +79,7 @@
                                 </div>
                             </a>
                         </li>
-                        <!-- AbdulAziz's CV Start-->
+                        <!-- AbdulAziz's CV End-->
 
                         <!-- Faisal's CV Start-->
                         <li class="message-preview">
