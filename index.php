@@ -18,21 +18,28 @@
 
 
       <?php
-          // if(isset($_POST['search'])){
-          //   $title = $_POST['search_title'];
+          if(isset($_POST['search'])){
+            $title = $_POST['search_title'];
 
-          //   $title_query = "SELECT * FROM posts where title = $title";
-          //   $search_result = mysqli_query($db, $title_query);
-          //   $row_search = mysqli_fetch_assoc($search_result);
-          //   $search_title = $row_search['title'];
-          // }
-
-          // if(!($search_title == NULL)){
-          //   $title = $search_title;
-          // }
-          $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
+            $title_query = "SELECT * FROM posts where title = '$title'";
+            $search_result = mysqli_query($db, $title_query);
+            if(mysqli_num_rows($search_result) > 0){
+              $row_search = mysqli_fetch_assoc($search_result);
+              $search_title = $row_search['title'];
+              $title = $search_title;
+            }
+          }
+          if(isset($_POST['clear_search'])){
+            unset($search_title);
+            // header('location: index.php');
+          }
+          if(isset($search_title)){
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts WHERE title = '$title'";
+          }else{
+            $query = "SELECT post_content, image_id, user_id, title, DATE_FORMAT(post_time, '%M %D at %h:%i') AS formatted_time FROM posts";
+          }
           $result = mysqli_query($db, $query);
-            
+
           if(!$result) {
             die("Something went wrong! " . mysqli_error($db));
           }
@@ -108,7 +115,7 @@
     <div class="col-md-4">
       <!-- Blog Search Well -->
       <div class="well">
-        <h4>Blog Search</h4>
+        <h4>Search Blog Title</h4>
         <form action="" method="post">
           <div class="input-group">
             <input type="text" name="search_title" class="form-control" />
@@ -118,6 +125,7 @@
               </button>
             </span>
           </div>
+          <button type="submit" name="clear_search" class="btn btn-primary">Clear search</button>
         </form>
         <!-- /.input-group -->
       </div>
